@@ -25,11 +25,17 @@ public void testSettingJobId(){
     public void testJobConstructorSetsAllFields(){
         Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(test_job1 instanceof Job);
+        int id = test_job1.getId();
+        assertEquals(1, id);
         assertEquals("Product tester", test_job1.getName());
         String employerName = test_job1.getEmployer().getValue();
         assertEquals("ACME", employerName);
         String locationName = test_job1.getLocation().getValue();
         assertEquals("Desert", locationName);
+        String positionType = test_job1.getPositionType().getValue();
+        assertEquals("Quality control", positionType);
+        String coreCompetency = test_job1.getCoreCompetency().getValue();
+        assertEquals("Persistence", coreCompetency);
 
 
         //will need 10 tests!!!
