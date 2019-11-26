@@ -11,20 +11,27 @@ import static org.junit.Assert.assertFalse;
 public class JobTest {
 
     @Before
-    public void createJobObject(){
+    public void createJobObject() {
         Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 
     @Test
-public void testSettingJobId(){
-    Job test_job_Id = new Job();
-    Job test_job_Id1 = new Job();
-    assertEquals(test_job_Id.getId(), test_job_Id1.getId(), 1);
+    public void testSettingJobId() {
+        Job test_job_Id = new Job();
+        Job test_job_Id1 = new Job();
+        assertEquals(test_job_Id.getId(), test_job_Id1.getId(), 1);
     }
+
     @Test
-    public void testJobConstructorSetsAllFields(){
+    public void testJobConstructorSetsAllFields() {
         Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(test_job1 instanceof Job);
+        assertTrue(new Employer("ACME") instanceof Employer);
+        assertTrue(new Location("Desert") instanceof Location);
+        assertTrue(new PositionType("Quality control") instanceof PositionType);
+        assertTrue(new CoreCompetency("persistence") instanceof CoreCompetency);
+
+
         int id = test_job1.getId();
         assertEquals(1, id);
         assertEquals("Product tester", test_job1.getName());
@@ -40,4 +47,17 @@ public void testSettingJobId(){
 
         //will need 10 tests!!!
     }
+
+    @Test
+    public void testJobsForEquality() {
+        Job test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job test_job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertFalse(test_job3 == test_job4);
+    }
+//    @Test
+//    public void testToString(){
+//
+//    }
+
 }
