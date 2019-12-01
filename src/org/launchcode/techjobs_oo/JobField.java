@@ -11,34 +11,23 @@ public abstract class JobField {
             nextId++;
         }
 
-        public JobField(String aValue) {
+        public JobField(String value) {
             this();
-            value = aValue;
-        }
-
-        public boolean contains(String value) {
-            return this.value.toLowerCase().contains(value.toLowerCase());
+            this.value = value;
         }
 
         public String getValue() {
             return value;
         }
 
-        public void setValue(String aValue) {
-            value = aValue;
-        }
-
-        public String toString() {
-            return value;
-        }
+    public void setValue(String value) {
+        this.value = value;
+    }
 
         public int getId() {
             return id;
         }
 
-//        private void setId(int id) {
-//            this.id = id;
-//        }
 
         @Override
         public boolean equals(Object o) {
@@ -54,6 +43,14 @@ public abstract class JobField {
         public int hashCode() {
             return id;
         }
+      @Override
+      public String toString() {
+        return value;
+    }
+
+    //        public boolean contains(String value) {
+//            return this.value.toLowerCase().contains(value.toLowerCase());
+//        }
 
     }
 

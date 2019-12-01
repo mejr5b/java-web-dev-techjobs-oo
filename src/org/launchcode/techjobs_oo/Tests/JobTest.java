@@ -5,8 +5,7 @@ import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class JobTest {
 
@@ -32,8 +31,8 @@ public class JobTest {
         assertTrue(new CoreCompetency("persistence") instanceof CoreCompetency);
 
 
-        int id = test_job1.getId();
-        assertEquals(1, id);
+//        int id = test_job1.getId();
+        assertEquals(2, test_job1.getId());
         assertEquals("Product tester", test_job1.getName());
         String employerName = test_job1.getEmployer().getValue();
         assertEquals("ACME", employerName);
@@ -53,11 +52,20 @@ public class JobTest {
         Job test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job test_job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        assertFalse(test_job3 == test_job4);
-    }
-//    @Test
-//    public void testToString(){
-//
-//    }
+        assertNotEquals(test_job3, test_job4);
 
+    }
+    @Test
+    public void testToString(){
+        Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+         test_job1.toString().contains("\n");
+    }
+    @Test
+    public void testToStringTwo(){
+    Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_job1.toString().contains("id: ");
+        test_job1.toString().contains("name: ");
+        test_job1.toString().contains("employer: ");
+        test_job1.toString().contains("location: ");
+    }
 }

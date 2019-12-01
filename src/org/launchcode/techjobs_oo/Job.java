@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Job {
 
     private int id;
-    private int nextId = 1;
+    private static int nextId = 1;
 
     private String name;
     private Employer employer;
@@ -41,6 +41,7 @@ public class Job {
     public int getId() {
         return id;
     }
+
 
     public String getName() {
         return name;
@@ -95,6 +96,37 @@ public class Job {
         return Objects.hash(getId());
     }
 
-//    @Override
-//    public String toString() { }
-}
+
+    public static String toString(Job job) {
+        int jobId = job.getId();
+        String jobName = job.getName();
+        String jobEmployer = job.getEmployer().toString();
+        String jobLocation = job.getLocation().toString();
+        String jobPositionType = job.getPositionType().toString();
+        String jobCoreCompetency = job.getCoreCompetency().toString();
+        if (jobName == "") {
+            jobName = "data not available";
+        }
+            if (jobEmployer == "") {
+                jobEmployer =  "data not available";
+            }
+            if (jobLocation == "") {
+                jobLocation =  "data not available";
+            }
+            if (jobPositionType == "") {
+                jobPositionType =  "data not available";
+            }
+            if (jobCoreCompetency == "") {
+                jobCoreCompetency = "data not available";
+            }
+            return "\n" +
+                    "id: " + jobId + "\n" +
+                    "name: " + jobName + '\n' +
+                    "employer: " + jobEmployer + "\n" +
+                    "location: " + jobLocation + "\n" +
+                    "positionType: " + jobPositionType + "\n" +
+                    "coreCompetency: " + jobCoreCompetency + "\n"
+                    ;
+        }
+    }
+
