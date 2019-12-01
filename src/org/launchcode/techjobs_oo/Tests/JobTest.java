@@ -53,6 +53,7 @@ public class JobTest {
         Job test_job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
         assertNotEquals(test_job3, test_job4);
+        assertFalse(test_job3.equals(test_job4));
 
     }
     @Test
