@@ -63,9 +63,17 @@ public class JobTest {
     @Test
     public void testToStringTwo(){
     Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        test_job1.toString().contains("id: ");
-        test_job1.toString().contains("name: ");
-        test_job1.toString().contains("employer: ");
-        test_job1.toString().contains("location: ");
+        test_job1.toString().contains("id: " + "\n");
+        test_job1.toString().contains("name: " + "Product Tester" + "\n");
+        test_job1.toString().contains("employer: " + "ACME" + "\n");
+        test_job1.toString().contains("location: " + "Desert" + "\n");
+        test_job1.toString().contains("positionType: " + "Quality control" + "\n");
+        test_job1.toString().contains("coreCompetency: " + "Persistence" + "\n");
+    }
+    @Test
+    public void testToStringThree(){
+        Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location(""), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_job1.toString().contains("location: data not available");
+
     }
 }
